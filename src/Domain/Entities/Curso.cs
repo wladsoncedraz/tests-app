@@ -6,7 +6,15 @@ namespace Domain.Entities
 {
     public class Curso
     {
-        public Curso(string nome, string descricao, string publicoAlvo, int cargaHoraria, decimal valor)
+        public enum ePublicoAlvo
+        {
+            Estudante,
+            Universitario,
+            Empregado,
+            Empreendedor
+        }
+
+        public Curso(string nome, string descricao, ePublicoAlvo publicoAlvo, int cargaHoraria, decimal valor)
         {
             Nome = nome;
             Descricao = descricao;
@@ -18,7 +26,7 @@ namespace Domain.Entities
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public string PublicoAlvo { get; private set; }
+        public ePublicoAlvo PublicoAlvo { get; private set; }
         public int CargaHoraria { get; private set; }
         public decimal Valor { get; private set; }
     }

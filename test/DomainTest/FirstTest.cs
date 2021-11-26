@@ -25,7 +25,6 @@ namespace DomainTest
             // Validação de resultados
 
             int number = 3;
-            var numberTwo = 1;
 
             List<int> numbers = new List<int> { 1, 3, 5, 7 };
             var result = numbers.Select(n => n = 3).ToList();

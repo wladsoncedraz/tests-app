@@ -1,5 +1,7 @@
 ﻿using Xunit;
 using Domain.Entities;
+using ExpectedObjects;
+using static Domain.Entities.Curso;
 
 namespace DomainTest.Cursos
 {
@@ -10,14 +12,22 @@ namespace DomainTest.Cursos
         {
             // Arrange:
             // Prepara o cenário para realizar o teste
-            var curso = new Curso("Engenharia da Computação", "Graduação", "TI", 55, 950);
+            var cursoEsperado = new
+            {
+                Nome = "Informática Básica",
+                Descricao = "Graduação",
+                CargaHoraria = (int)80,
+                PublicoAlvo = ePublicoAlvo.Estudante,
+                Valor = (decimal)950
+            };
 
             // Act:
             // Realiza a ação de testar o método
+            var curso = new Curso(cursoEsperado.Nome, cursoEsperado.Descricao, cursoEsperado.PublicoAlvo, cursoEsperado.CargaHoraria, cursoEsperado.Valor);
 
             // Assert:
             // Validação de resultados
-            Assert.NotNull(curso);
+            cursoEsperado.ToExpectedObject().ShouldMatch(curso);
         }
     }
 }
