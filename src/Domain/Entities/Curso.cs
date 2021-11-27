@@ -16,6 +16,15 @@ namespace Domain.Entities
 
         public Curso(string nome, string descricao, ePublicoAlvo publicoAlvo, int cargaHoraria, decimal valor)
         {
+            if (string.IsNullOrEmpty(nome))
+                throw new ArgumentException("Nome invalido");
+
+            if (cargaHoraria < 1)
+                throw new ArgumentException("CargaHoraria invalida");
+
+            if (valor < 1)
+                throw new ArgumentException("Valor invalido");
+
             Nome = nome;
             Descricao = descricao;
             CargaHoraria = cargaHoraria;
