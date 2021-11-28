@@ -3,11 +3,33 @@ using Domain.Entities;
 using ExpectedObjects;
 using static Domain.Entities.Curso;
 using System;
+using DomainTest._Util;
+using Xunit.Abstractions;
 
 namespace DomainTest.Cursos
 {
     public class CursoTest
     {
+        private readonly ITestOutputHelper _output;
+        private readonly string _nome;
+        private readonly int _cargaHoraria;
+        private readonly ePublicoAlvo _publicoAlvo;
+        private readonly decimal _valor;
+        private readonly string _descricao;
+
+        public CursoTest(ITestOutputHelper output)
+        {
+            _output = output;
+            _output.WriteLine("Construtor executado!");
+
+            _nome = "Informática Básica";
+            _cargaHoraria = 90;
+            _descricao = "Graduação";
+            _cargaHoraria = 80;
+            _publicoAlvo = ePublicoAlvo.Estudante;
+            _valor = 950;
+        }
+
         [Fact]
         public void CreateCursoCreatingCursoReturnCurso()
         {
@@ -38,32 +60,43 @@ namespace DomainTest.Cursos
         {
             // Arrange:
             // Prepara o cenário para realizar o teste
-            var cursoEsperado = new
-            {
-                Nome = "Informática Básica",
-                Descricao = "Graduação",
-                CargaHoraria = (int)80,
-                PublicoAlvo = ePublicoAlvo.Estudante,
-                Valor = (decimal)950
-            };
+            //var cursoEsperado = new
+            //{
+            //    Nome = "Informática Básica",
+            //    Descricao = "Graduação",
+            //    CargaHoraria = (int)80,
+            //    PublicoAlvo = ePublicoAlvo.Estudante,
+            //    Valor = (decimal)950
+            //};
 
             // Act:
             // Realiza a ação de testar o método
 
             // Assert:
             // Validação de resultados
-            var message = Assert.Throws<ArgumentException>(() =>
+            //var message = Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        nomeInvalido,
+            //        cursoEsperado.Descricao,
+            //        cursoEsperado.PublicoAlvo,
+            //        cursoEsperado.CargaHoraria,
+            //        cursoEsperado.Valor
+            //        );
+            //}).Message;
+
+            //Assert.Equal("Nome invalido", message);
+
+            Assert.Throws<ArgumentException>(() =>
             {
                 new Curso(
                     nomeInvalido,
-                    cursoEsperado.Descricao,
-                    cursoEsperado.PublicoAlvo,
-                    cursoEsperado.CargaHoraria,
-                    cursoEsperado.Valor
+                    this._descricao,
+                    this._publicoAlvo,
+                    this._cargaHoraria,
+                    this._valor
                     );
-            }).Message;
-
-            Assert.Equal("Nome invalido", message);
+            }).ComMessagem("Nome invalido");
         }
 
         [Theory]
@@ -74,32 +107,43 @@ namespace DomainTest.Cursos
         {
             // Arrange:
             // Prepara o cenário para realizar o teste
-            var cursoEsperado = new
-            {
-                Nome = "Informática Básica",
-                Descricao = "Graduação",
-                CargaHoraria = (int)80,
-                PublicoAlvo = ePublicoAlvo.Estudante,
-                Valor = (decimal)950
-            };
+            //var cursoEsperado = new
+            //{
+            //    Nome = "Informática Básica",
+            //    Descricao = "Graduação",
+            //    CargaHoraria = (int)80,
+            //    PublicoAlvo = ePublicoAlvo.Estudante,
+            //    Valor = (decimal)950
+            //};
 
             // Act:
             // Realiza a ação de testar o método
 
             // Assert:
             // Validação de resultados
-            var message = Assert.Throws<ArgumentException>(() =>
+            //var message = Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        cursoEsperado.Nome,
+            //        cursoEsperado.Descricao,
+            //        cursoEsperado.PublicoAlvo,
+            //        cargaHorariaInvalida,
+            //        cursoEsperado.Valor
+            //        );
+            //}).Message;
+
+            //Assert.Equal("CargaHoraria invalida", message);
+
+            Assert.Throws<ArgumentException>(() =>
             {
                 new Curso(
-                    cursoEsperado.Nome,
-                    cursoEsperado.Descricao,
-                    cursoEsperado.PublicoAlvo,
+                    this._nome,
+                    this._descricao,
+                    this._publicoAlvo,
                     cargaHorariaInvalida,
-                    cursoEsperado.Valor
+                    this._valor
                     );
-            }).Message;
-
-            Assert.Equal("CargaHoraria invalida", message);
+            }).ComMessagem("CargaHoraria invalida");
         }
 
         [Theory]
@@ -109,32 +153,42 @@ namespace DomainTest.Cursos
         {
             // Arrange:
             // Prepara o cenário para realizar o teste
-            var cursoEsperado = new
-            {
-                Nome = "Informática Básica",
-                Descricao = "Graduação",
-                CargaHoraria = (int)80,
-                PublicoAlvo = ePublicoAlvo.Estudante,
-                Valor = (decimal)950
-            };
+            //var cursoEsperado = new
+            //{
+            //    Nome = "Informática Básica",
+            //    Descricao = "Graduação",
+            //    CargaHoraria = (int)80,
+            //    PublicoAlvo = ePublicoAlvo.Estudante,
+            //    Valor = (decimal)950
+            //};
 
             // Act:
             // Realiza a ação de testar o método
 
             // Assert:
             // Validação de resultados
-            var message = Assert.Throws<ArgumentException>(() =>
+            //var message = Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        cursoEsperado.Nome,
+            //        cursoEsperado.Descricao,
+            //        cursoEsperado.PublicoAlvo,
+            //        cursoEsperado.CargaHoraria,
+            //        valorInvalido
+            //        );
+            //}).Message;
+
+            //Assert.Equal("Valor invalido", message);
+            Assert.Throws<ArgumentException>(() =>
             {
                 new Curso(
-                    cursoEsperado.Nome,
-                    cursoEsperado.Descricao,
-                    cursoEsperado.PublicoAlvo,
-                    cursoEsperado.CargaHoraria,
+                    this._nome,
+                    this._descricao,
+                    this._publicoAlvo,
+                    this._cargaHoraria,
                     valorInvalido
                     );
-            }).Message;
-
-            Assert.Equal("Valor invalido", message);
+            }).ComMessagem("Valor invalido");
         }
     }
 }
