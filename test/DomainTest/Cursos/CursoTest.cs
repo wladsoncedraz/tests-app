@@ -5,6 +5,7 @@ using static Domain.Entities.Curso;
 using System;
 using DomainTest._Util;
 using Xunit.Abstractions;
+using DomainTest.Builders;
 
 namespace DomainTest.Cursos
 {
@@ -92,15 +93,25 @@ namespace DomainTest.Cursos
 
             //Assert.Equal("Nome invalido", message);
 
+            //Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        nomeInvalido,
+            //        this._descricao,
+            //        this._publicoAlvo,
+            //        this._cargaHoraria,
+            //        this._valor
+            //        );
+            //}).ComMessagem("Nome invalido");
+
             Assert.Throws<ArgumentException>(() =>
             {
-                new Curso(
-                    nomeInvalido,
-                    this._descricao,
-                    this._publicoAlvo,
-                    this._cargaHoraria,
-                    this._valor
-                    );
+
+                CursoBuilder
+                    .Novo()
+                    .ComNome(nomeInvalido)
+                    .Build();
+
             }).ComMessagem("Nome invalido");
         }
 
@@ -139,15 +150,25 @@ namespace DomainTest.Cursos
 
             //Assert.Equal("CargaHoraria invalida", message);
 
+            //Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        this._nome,
+            //        this._descricao,
+            //        this._publicoAlvo,
+            //        cargaHorariaInvalida,
+            //        this._valor
+            //        );
+            //}).ComMessagem("CargaHoraria invalida");
+
             Assert.Throws<ArgumentException>(() =>
             {
-                new Curso(
-                    this._nome,
-                    this._descricao,
-                    this._publicoAlvo,
-                    cargaHorariaInvalida,
-                    this._valor
-                    );
+
+                CursoBuilder
+                    .Novo()
+                    .ComCargaHoraria(cargaHorariaInvalida)
+                    .Build();
+
             }).ComMessagem("CargaHoraria invalida");
         }
 
@@ -184,15 +205,26 @@ namespace DomainTest.Cursos
             //}).Message;
 
             //Assert.Equal("Valor invalido", message);
+
+            //Assert.Throws<ArgumentException>(() =>
+            //{
+            //    new Curso(
+            //        this._nome,
+            //        this._descricao,
+            //        this._publicoAlvo,
+            //        this._cargaHoraria,
+            //        valorInvalido
+            //        );
+            //}).ComMessagem("Valor invalido");
+
             Assert.Throws<ArgumentException>(() =>
             {
-                new Curso(
-                    this._nome,
-                    this._descricao,
-                    this._publicoAlvo,
-                    this._cargaHoraria,
-                    valorInvalido
-                    );
+
+                CursoBuilder
+                    .Novo()
+                    .ComValor(valorInvalido)
+                    .Build();
+
             }).ComMessagem("Valor invalido");
         }
     }

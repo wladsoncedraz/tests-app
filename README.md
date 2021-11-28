@@ -5,3 +5,4 @@
 ## Principais conceitos considerados
 - Modelo Rico e Modelo Anemico;
 - Métodos de extensão;
+- Patern Builder;
