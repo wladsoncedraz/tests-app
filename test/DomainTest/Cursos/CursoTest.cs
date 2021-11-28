@@ -8,7 +8,7 @@ using Xunit.Abstractions;
 
 namespace DomainTest.Cursos
 {
-    public class CursoTest
+    public class CursoTest : IDisposable
     {
         private readonly ITestOutputHelper _output;
         private readonly string _nome;
@@ -28,6 +28,11 @@ namespace DomainTest.Cursos
             _cargaHoraria = 80;
             _publicoAlvo = ePublicoAlvo.Estudante;
             _valor = 950;
+        }
+
+        public void Dispose()
+        {
+            _output.WriteLine("Dispose sendo executado!");
         }
 
         [Fact]
