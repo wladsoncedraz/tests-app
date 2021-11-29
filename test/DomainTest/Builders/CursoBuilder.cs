@@ -1,10 +1,11 @@
-﻿using Domain.Entities;
+﻿using Domain.Cursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Domain.Entities.Curso;
+using static Domain.Cursos.Curso;
+using static Domain.Cursos.PublicoAlvo;
 
 namespace DomainTest.Builders
 {

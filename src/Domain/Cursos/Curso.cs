@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Domain.Cursos.PublicoAlvo;
 
-namespace Domain.Entities
+namespace Domain.Cursos
 {
     public class Curso
     {
-        public enum ePublicoAlvo
-        {
-            Estudante,
-            Universitario,
-            Empregado,
-            Empreendedor
-        }
+        public int Id { get; private set; }
+        public string Nome { get; private set; }
+        public string Descricao { get; private set; }
+        public ePublicoAlvo PublicoAlvo { get; private set; }
+        public int CargaHoraria { get; private set; }
+        public decimal Valor { get; private set; }
 
         public Curso(string nome, string descricao, ePublicoAlvo publicoAlvo, int cargaHoraria, decimal valor)
         {
@@ -31,12 +31,5 @@ namespace Domain.Entities
             PublicoAlvo = publicoAlvo;
             Valor = valor;
         }
-
-        public int Id { get; private set; }
-        public string Nome { get; private set; }
-        public string Descricao { get; private set; }
-        public ePublicoAlvo PublicoAlvo { get; private set; }
-        public int CargaHoraria { get; private set; }
-        public decimal Valor { get; private set; }
     }
 }

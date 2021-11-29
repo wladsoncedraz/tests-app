@@ -1,12 +1,12 @@
 ﻿using Xunit;
-using Domain.Entities;
+using Domain.Cursos;
 using ExpectedObjects;
-using static Domain.Entities.Curso;
 using System;
 using DomainTest._Util;
 using Xunit.Abstractions;
 using DomainTest.Builders;
 using Bogus;
+using static Domain.Cursos.PublicoAlvo;
 
 namespace DomainTest.Cursos
 {
