@@ -6,6 +6,7 @@ using System;
 using DomainTest._Util;
 using Xunit.Abstractions;
 using DomainTest.Builders;
+using Bogus;
 
 namespace DomainTest.Cursos
 {
@@ -23,12 +24,14 @@ namespace DomainTest.Cursos
             _output = output;
             _output.WriteLine("Construtor executado!");
 
-            _nome = "Informática Básica";
-            _cargaHoraria = 90;
-            _descricao = "Graduação";
-            _cargaHoraria = 80;
+            // Biblioteca Bogus para geração randomica de dados para testes
+            var faker = new Faker();
+
+            _nome = faker.Random.Word();
+            _cargaHoraria = faker.Random.Int(50, 1000);
+            _descricao = faker.Lorem.Paragraph();
             _publicoAlvo = ePublicoAlvo.Estudante;
-            _valor = 950;
+            _valor = faker.Random.Decimal(100, 1500);
         }
 
         public void Dispose()
