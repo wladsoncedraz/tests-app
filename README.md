@@ -7,3 +7,4 @@
 - Métodos de extensão;
 - Pattern Builder;
 - Bogus;
+- Moq;
